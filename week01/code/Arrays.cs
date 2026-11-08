@@ -8,12 +8,20 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Create an array with the requested length
+        double[] multiples = new double[length];
 
-        return []; // replace this return statement with your own
+        // Loop through each position in the array
+        for (int i = 0; i < length; i++)
+        {
+            // Calculate the multiple of the number
+            // The first element should be number * 1,
+            // the second should be number * 2, and so on
+            multiples[i] = number * (i + 1);
+        }
+
+        // Return the completed array
+        return multiples;
     }
 
     /// <summary>
@@ -25,9 +33,33 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Create a temporary list to store the rotated values
+        // This prevents us from overwriting values while rearranging them
+        List<int> rotated = new List<int>();
+
+        // Calculate the index where the rotation starts
+        // The last 'amount' elements will move to the front
+        int startIndex = data.Count - amount;
+
+        // Copy the elements from startIndex to the end
+        // of the original list into the temporary list
+        for (int i = startIndex; i < data.Count; i++)
+        {
+            rotated.Add(data[i]);
+        }
+
+        // Copy the elements from the beginning of the
+        // original list up to startIndex into the temporary list
+        for (int i = 0; i < startIndex; i++)
+        {
+            rotated.Add(data[i]);
+        }
+
+        // Clear the original list
+        data.Clear();
+
+        // Add all values from the temporary list back
+        // into the original list in their rotated order
+        data.AddRange(rotated);
     }
 }
